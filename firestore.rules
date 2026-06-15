@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. Global Catch-all safety gate
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper: Auth check
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Helper: Owner ID matching
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Helper: Valid Document ID format
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Helper: Incoming resource data shorthand
+    function incoming() {
+      return request.resource.data;
+    }
+
+    // Helper: Existing resource data shorthand
+    function existing() {
+      return resource.data;
+    }
+
+    // User Profile matching
+    match /users/{userId} {
+      // Validate user ID is secure
+      allow get, write: if isValidId(userId) && isOwner(userId);
+      
+      // User entity validation
+      function isValidUser(data) {
+        return data.keys().hasAll(['uid', 'email', 'createdAt'])
+          && data.keys().size() == 3
+          && data.uid == request.auth.uid
+          && data.email is string
+          && data.email.size() <= 200
+          && data.createdAt == request.time;
+      }
+
+      allow create: if isValidUser(incoming());
+      allow update: if isValidUser(incoming()) 
+        && incoming().createdAt == existing().createdAt
+        && incoming().email == existing().email;
+    }
+
+    // Chat Message sub-collection
+    match /users/{userId}/messages/{messageId} {
+      allow get, list, write: if isValidId(userId) && isOwner(userId) && isValidId(messageId);
+
+      function isValidChatMessage(data) {
+        return data.keys().hasAll(['userId', 'sender', 'text', 'createdAt'])
+          && data.keys().size() == 4
+          && data.userId == request.auth.uid
+          && (data.sender == 'user' || data.sender == 'ai')
+          && data.text is string
+          && data.text.size() <= 5000
+          && data.createdAt == request.time;
+      }
+
+      allow create: if isValidChatMessage(incoming());
+      allow update: if false; // Messages are immutable
+      allow delete: if false;
+    }
+  }
+}
