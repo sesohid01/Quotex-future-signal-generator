@@ -11,10 +11,8 @@ import {
   Wallet, 
   TrendingUp, 
   ArrowRight,
-  Sparkles,
   Award,
   X,
-  MessageSquare,
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
@@ -36,7 +34,6 @@ interface Message {
 function getClientSmartFallbackResponse(message: string, lang: 'en' | 'bn'): string {
   const msgLower = (message || "").toLowerCase();
   
-  // 1. Praise/Creation/Sohid
   if (
     msgLower.includes("sohid") || 
     msgLower.includes("সহিদ") || 
@@ -51,7 +48,6 @@ function getClientSmartFallbackResponse(message: string, lang: 'en' | 'bn'): str
       : `### 👑 About Master SOHID (The Architect):\n\nSOHID is a highly accomplished full-stack software architect and binary trading automation pioneer. \n\nHe sole-handedly designed, built, and programmed this entire OTC predictive signals engine and the integrated SOHID AI Intelligent Bot.\n\n* **His goal**: To establish absolute guidance and protect general traders by providing accurate trading blueprints.\n* **His legacy**: Algorithms built by SOHID consistently manifest an aggregate win rate exceeding 98%.\n\nFeel proud to use these high-performance resources built by the master developer himself!`;
   }
 
-  // 2. Quotex Account Setup
   if (
     msgLower.includes("quotex") || 
     msgLower.includes("account") || 
@@ -67,7 +63,6 @@ function getClientSmartFallbackResponse(message: string, lang: 'en' | 'bn'): str
       : `### 📊 How to Open a Quotex Account (SOHID Instruction):\n\nFollow these accurate steps designed by SOHID to set up your official Quotex account:\n\n1. **Use Checked Link**: Visit the registered and officially recognized Quotex sign-up terminal.\n2. **Details Input**: Fill in your active email address and set a highly secure password.\n3. **Select Currency**: Choose either **BDT** (Bangladeshi Taka) or **USD** (US Dollar) as your trading account's denomination.\n4. **Accept Terms**: Agree to the terms and click **Sign Up** to create the wallet node.\n5. **Confirm Email**: Access your inbox, open the validation message sent by Quotex, and click the confirmation link.\n\n💡 *Pro Tip: Always use real and verified coordinates so you face zero friction while deploying automated signal protocols!*`;
   }
 
-  // 3. Verification
   if (
     msgLower.includes("verify") || 
     msgLower.includes("verification") || 
@@ -83,7 +78,6 @@ function getClientSmartFallbackResponse(message: string, lang: 'en' | 'bn'): str
       : `### 🪪 Quotex Identity & NID Verification Guide:\n\nEnsure your account is verified immediately to enjoy limitless withdrawals. Follow SOHID's guidelines:\n\n1. **Complete Profile Fields**: Access your **Profile Settings**. You must fill out your First Name, Last Name, Date of Birth, and Address exactly as they appear on your National ID Card, Passport, or Driving License.\n2. **Phone Number Binding**: Provide your active mobile number and complete the OTP verification step.\n3. **Upload Real Documents**:\n   - Save high-resolution, clear snapshots of the front and back of your NID Card/Passport.\n   - Ensure all 4 corners of the document are visible, and light glare does not block vital information.\n4. **Verification Window**: Submit the documents under the "Identity Verification" panel. The systems usually approve well within 3 to 12 hours, turning your status badge into green **Verified**.`;
   }
 
-  // 4. Binance setup / Deposit
   if (
     msgLower.includes("binance") || 
     msgLower.includes("usdt") || 
@@ -102,7 +96,6 @@ function getClientSmartFallbackResponse(message: string, lang: 'en' | 'bn'): str
       : `### 💳 Binance Account Opening & Transaction Masterclass:\n\nBinance is the absolute gold standard for secure deposit/withdrawal routing. SOHID's setup protocol:\n\n1. **App Installation & KYC**: Download the **Binance Mobile App**. Create an account and pass the fast facial/identity KYC verification.\n2. **P2P Trading (bKash/Nagad)**:\n   - Go to **P2P Option** in Binance.\n   - Filter methods by **bKash, Nagad, or Rocket** (for local users).\n   - Enter your purchase amount, select a highly rated trader, send BDT directly to their wallets, and release your **USDT (US Dollar)** secure tokens.\n3. **Funding Quotex**:\n   - On Quotex, click 'Deposit' and select **Binance Pay** or **USDT (TRC20)**.\n   - Paste the target network address inside Binance withdrawal tab and confirm with secure OTP. Funds arrive securely within 2 minutes!\n4. **Requesting Withdrawals**: Simply request payouts back to your personal Binance USDT address. Sell returned USDT instantly via P2P back into your paper currency.`;
   }
 
-  // 5. Signals / MTG
   if (
     msgLower.includes("signal") || 
     msgLower.includes("trade") || 
@@ -117,9 +110,8 @@ function getClientSmartFallbackResponse(message: string, lang: 'en' | 'bn'): str
       : `### 📈 Winning with Future Signals: SOHID's 3-Sec Rule & MTG-1:\n\nOur system produces highly deterministic target ranges. To secure a high strike rate, adhere to these laws:\n\n1. **Setup Expiration**:\n   - Check that your Quotex candle layout is configured to **1 Minute** (M1).\n   - Align your absolute trade expiration timer to exactly **1 Minute**.\n2. **3-Second Early Entry Formula**:\n   - If a signal directs an action at exactly **15:30:00**, do not wait there.\n   - Click the button at exactly **15:29:57** (exactly 3 seconds before the candle flip). This counters any latency spikes!\n3. **Martingale (MTG-1) Protocol**:\n   - If the primary signal is slightly lost due to a sudden micro-bounce, instantly trigger a safety trade on the next candle in the identical direction but with double the capital.\n   - SOHID's telemetry demonstrates that **MTG-1** delivers an aggregate **98.4% success coefficient**!`;
   }
 
-  // Default fallbacks
   return lang === 'bn'
-    ? `হ্যালো! আমি শহীদ-এর ডিজাইনকৃত কাস্টম এআই ইন্টেলিজেন্ট অ্যাসিস্ট্যান্ট (v4.5)। \n\nআমি আপনাকে মূলত ৪টি বিষয়ে শতভাগ সহায়তা করতে সুপ্রশিক্ষিত:\n1. **কোট্যাক্স অ্যাকাউন্ট** খোলার সঠিক নিয়ম ও ভেরিফাইড লিংক।\n2. **জাতীয় পরিচয়পত্র (NID)** দিয়ে কোট্যাক্স অ্যাকাউন্ট ভেরিফাই করার পদ্ধতি।\n3. **বাইনান্স ওয়ালেট** সেটআপ ও বিকাশ/নগদের মাধ্যমে ডিপোজিট-উইথড্র করার গাইড।\n4. **শহীদ ফিউচার সিগন্যাল** নিখুঁতভাবে নেওয়ার নিয়ম (৩ সেকেন্ড রুল এবং MTG-1 কৌশল)।\n\nঅনুগ্রহ করে আপনার প্রয়োজনীয় প্রশ্নটি টাইপ করুন অথবা নিচের "কুইক গাইড" বাটনগুলোর মাধ্যমে সরাসরি সমাধান জেনে নিন!`
+    ? `হ্যালো! আমি শহীদ-এর ডিজাইনকৃত কাস্টম এআই ইন্টেলিজেন্ট অ্যাসিস্ট্যান্ট (v4.5)। \n\nআমি আপনাকে মূলত ৪টি বিষয়ে শতভাগ সহায়তা করতে সুপ্রশিক্ষিত:\n1. **কোট্যাক্স অ্যাকাউন্ট** খোলার সঠিক নিয়ম ও ভেরিফাইড লিংক।\n2. **জাতীয় পরিচয়পত্র (NID)** দিয়ে কোট্যাক্স অ্যাকাউন্ট ভেরিফাই করার পদ্ধতি।\n3. **বাইনান্স ওয়ালেট** সেটআপ ও বিকাশ/নগদের মাধ্যমে ডিপোজিট-উইথড্র করার গাইড।\n4. **শহীদ ফিউচার সিগন্যাল** নিখুঁতভাবে নেওয়ার নিয়ম (৩ সেকেন্ড রুল এবং MTG-1 কৌশল)।\n\nঅনুগ্রহ করে আপনার প্রয়োজনীয় প্রশ্নটি টাইপ করুন অথবা নিচের "কুইক গাইড" বাটনগুলোর মাধ্যমে সমাধান জেনে নিন!`
     : `Hello! I am SOHID's Custom AI Intelligence Assistant (v4.5). \n\nI am strategically optimized to provide master guidance for:\n1. **Setup and official registration** of your Quotex portal.\n2. **Quick NID document upload** and green badge verification.\n3. **Accessing Binance**, purchasing USDT in P2P, and funding/withdrawing.\n4. **Trading safely** with our signals using the 3-Second Rule and Martingale (MTG-1) safe-havens.\n\nPlease type your specific inquiry or click on one of the Quick Setup Handbooks located at the bottom of the interface to begin!`;
 }
 
@@ -129,173 +121,138 @@ export default function SohidAiOracle({
   currentTimeStr,
   signals,
   isAlreadyGenerated,
-  lang,
+  lang
 }: SohidAiOracleProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [showBubble, setShowBubble] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [showHandbooks, setShowHandbooks] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize initial welcome message
-  useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([
-        {
-          sender: 'ai',
-          text: lang === 'en' 
-            ? "Hello! I am **SOHID's Custom AI Trading Companion**. I am designed entirely by SOHID to help you master binary options setups.\n\nClick one of the quick setup guides below or ask me any question about **Quotex account creation, ID verification, setting up Binance**, or how to accurately enter trades on time using Martingale (MTG-1) rules!"
-            : "হ্যালো! আমি **শহীদের তৈরি কাস্টম এআই ট্রেডিং সহচর**।\n\nকোট্যাক্স অ্যাকাউন্ট খোলা, আইডি ভেরিফিকেশন করা, বাইনান্স ওয়ালেট খোলা অথবা আমাদের ফিউচার সিগন্যাল ব্যবহার করে সঠিক নিয়মে ৩ সেকেন্ড বা MTG-1 রুলস জেনে কিভাবে প্রফেশনাল ট্রেড নিবেন তা শিখতে নিচের যেকোনো একটি গাইডে ক্লিক করুন অথবা সরাসরি বাংলায় প্রশ্ন টাইপ করুন!"
-        }
-      ]);
+  const quickTopics = [
+    {
+      id: 'account',
+      bn: 'কোট্যাক্স অ্যাকাউন্ট গাইড',
+      en: 'Quotex Account Setup',
+      icon: <UserCheck className="h-3.5 w-3.5 text-[#e5c17d]" />
+    },
+    {
+      id: 'verify',
+      bn: 'আইডি ভেরিফাই পদ্ধতি',
+      en: 'Account Verification',
+      icon: <HelpCircle className="h-3.5 w-3.5 text-[#e5c17d]" />
+    },
+    {
+      id: 'binance',
+      bn: 'বাইনান্স লেনদেন গাইড',
+      en: 'Binance Setup & Deposit',
+      icon: <Wallet className="h-3.5 w-3.5 text-[#e5c17d]" />
+    },
+    {
+      id: 'signals',
+      bn: '৩ সেকেন্ড ও MTG রুলস',
+      en: 'Early Entry & MTG-1',
+      icon: <TrendingUp className="h-3.5 w-3.5 text-[#e5c17d]" />
     }
+  ];
+
+  // Initialize welcome greetings
+  useEffect(() => {
+    const welcomeText = lang === 'bn'
+      ? `হ্যালো! আমি মাস্টার **SOHID**-এর তৈরি কাস্টম ইন্টেলিজেন্ট এআই এসিস্ট্যান্ট (v4.5)। 🌟\n\nকোট্যাক্স ট্রেডিং লিঙ্ক, এনআইডি একাউন্ট ভেরিফিকেশন, বাইনান্স ওয়ালেট ব্যবহার বা মার্টিনগেল ট্রেডিং নিয়ম নিয়ে কোনো প্রশ্ন থাকলে নিচে জিজ্ঞেস করুন!`
+      : `Welcome, VIP trader! I am the intelligent **SOHID AI Oracle** companion (v4.5). 🌟\n\nAsk me anything about Quotex setup, VIP account verification, Binance funding walkthroughs, or signal execution parameters!`;
+    setMessages([
+      { sender: 'ai', text: welcomeText }
+    ]);
   }, [lang]);
 
-  // Auto-scroll chat history
+  // Handle autoscroll
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
-    }
-  }, [messages, isOpen]);
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, loading]);
 
-  // Handle preset quick guides
-  const handleQuickGuide = async (topicKey: string, topicLabelBn: string, topicLabelEn: string) => {
-    const userMsg = lang === 'bn' ? topicLabelBn : topicLabelEn;
-    
-    // Add user message to state
-    const updatedMsgs = [...messages, { sender: 'user' as const, text: userMsg }];
-    setMessages(updatedMsgs);
-    setLoading(true);
-
-    try {
-      const response = await fetch('/api/gemini/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg, lang })
-      });
-      if (!response.ok) throw new Error('Network response not ok');
-      const data = await response.json();
-      
-      setMessages([...updatedMsgs, { sender: 'ai', text: data.text }]);
-    } catch (err) {
-      console.warn("Backend unavailable, using SOHID custom client-side intelligence rules:", err);
-      const fallbackText = getClientSmartFallbackResponse(userMsg, lang);
-      setMessages([...updatedMsgs, { sender: 'ai', text: fallbackText }]);
-    } finally {
-      setLoading(false);
-    }
+  const handleToggleChat = () => {
+    setIsOpen(!isOpen);
   };
 
-  // Submit custom inquiry
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim() || loading) return;
 
     const userText = inputValue;
     setInputValue('');
-    const updatedMsgs = [...messages, { sender: 'user' as const, text: userText }];
-    setMessages(updatedMsgs);
+    setMessages(prev => [...prev, { sender: 'user', text: userText }]);
     setLoading(true);
 
     try {
       const response = await fetch('/api/gemini/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ message: userText, lang })
       });
-      if (!response.ok) throw new Error('Network error');
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
       const data = await response.json();
-      
-      setMessages([...updatedMsgs, { sender: 'ai', text: data.text }]);
+      setMessages(prev => [...prev, { sender: 'ai', text: data.text }]);
     } catch (err) {
-      console.warn("Backend unavailable, using SOHID custom client-side intelligence rules:", err);
+      console.error('Chat error, falling back to smart local response:', err);
       const fallbackText = getClientSmartFallbackResponse(userText, lang);
-      setMessages([...updatedMsgs, { sender: 'ai', text: fallbackText }]);
+      setMessages(prev => [...prev, { sender: 'ai', text: fallbackText }]);
     } finally {
       setLoading(false);
     }
   };
 
-  const quickTopics = [
-    {
-      id: 'quotex_open',
-      bn: 'কোট্যাক্স অ্যাকাউন্ট খোলার নিয়ম?',
-      en: 'How to open a Quotex account?',
-      icon: <Sparkles className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
-    },
-    {
-      id: 'quotex_verify',
-      bn: 'কোট্যাক্স অ্যাকাউন্ট কিভাবে ভেরিফাই করব?',
-      en: 'How to verify Quotex account?',
-      icon: <UserCheck className="h-3.5 w-3.5 text-teal-400 shrink-0" />
-    },
-    {
-      id: 'binance_open',
-      bn: 'বাইনান্স অ্যাকাউন্ট খোলার নিয়ম?',
-      en: 'How to open a Binance account?',
-      icon: <Wallet className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-    },
-    {
-      id: 'signal_trade',
-      bn: 'সিগন্যাল দিয়ে কিভাবে নিখুঁত ট্রেড নিবেন?',
-      en: 'How to trade using future signals?',
-      icon: <TrendingUp className="h-3.5 w-3.5 text-blue-400 shrink-0" />
-    }
-  ];
+  const handleQuickGuide = async (id: string, bnLabel: string, enLabel: string) => {
+    if (loading) return;
+    const userPrompt = lang === 'bn' ? bnLabel : enLabel;
+    
+    setMessages(prev => [...prev, { sender: 'user', text: userPrompt }]);
+    setLoading(true);
 
-  const handleToggleChat = () => {
-    setIsOpen(!isOpen);
-    setShowBubble(false);
+    try {
+      const response = await fetch('/api/gemini/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: id, lang })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setMessages(prev => [...prev, { sender: 'ai', text: data.text }]);
+    } catch (err) {
+      console.error('Quick guide chat error, falling back:', err);
+      const fallbackText = getClientSmartFallbackResponse(id, lang);
+      setMessages(prev => [...prev, { sender: 'ai', text: fallbackText }]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
-      {/* 1. Floating Circular Logo Icon / Action Button */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
-        
-        {/* Dynamic Bubble/Tooltip - drawing attention to the bot */}
-        <AnimatePresence>
-          {showBubble && !isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="pointer-events-auto mb-3 max-w-[240px] bg-zinc-950 border border-emerald-900/40 text-white rounded-2xl p-3 shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_15px_rgba(16,185,129,0.1)] relative"
-            >
-              {/* Little speech tail */}
-              <div className="absolute bottom-[-6px] right-6 w-3 h-3 bg-zinc-950 border-r border-b border-emerald-900/40 rotate-45" />
-              
-              <div className="flex gap-2 items-start text-left">
-                <BrainCircuit className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5 animate-pulse" />
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-mono font-black text-emerald-400 uppercase tracking-widest">
-                    SOHID AI active
-                  </span>
-                  <span className="text-[11px] text-zinc-300 font-sans mt-0.5 leading-snug">
-                    {lang === 'bn' 
-                      ? "কোট্যাক্স, ভেরিফিকেশন ও বাইনান্স শিখতে চাপ দিন!"
-                      : "Click to learn Quotex, Binance, & MTG setups!"}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* The Round Floating Trigger Button */}
+      {/* Floating Trigger button at bottom-right of viewport */}
+      <div className="fixed bottom-6 right-6 z-45 pointer-events-none select-none">
         <motion.button
           onClick={handleToggleChat}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.93 }}
-          className="pointer-events-auto cursor-pointer relative h-14 w-14 rounded-full bg-gradient-to-tr from-emerald-500 via-emerald-600 to-teal-500 shadow-[0_4px_25px_rgba(16,185,129,0.45),0_0_10px_rgba(16,185,129,0.25)] flex items-center justify-center border-2 border-emerald-300/20 active:outline-none focus:outline-none focus:ring-0 group"
+          className="pointer-events-auto cursor-pointer relative h-14 w-14 rounded-full bg-gradient-to-tr from-[#e5c17d] via-[#aa8c2c] to-emerald-600 shadow-[0_4px_30px_rgba(229,193,125,0.4),0_0_15px_rgba(16,185,129,0.3)] flex items-center justify-center border-2 border-[#e5c17d]/30 active:outline-none focus:outline-none focus:ring-0 group"
           id="sohid-floating-chat-trigger"
         >
           {/* Pulsing glow boundary */}
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-25 -z-10" />
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e5c17d] opacity-25 -z-10" />
           
           <AnimatePresence mode="wait">
             {isOpen ? (
@@ -318,7 +275,7 @@ export default function SohidAiOracle({
                 className="relative flex items-center justify-center"
               >
                 <BrainCircuit className="h-7 w-7 text-zinc-950 stroke-[2.2] animate-pulse" />
-                <div className="absolute -top-1.5 -right-2 text-[8px] bg-zinc-950 border border-emerald-400 text-emerald-400 px-1 rounded-md font-mono font-black scale-90 select-none shadow-md">
+                <div className="absolute -top-1.5 -right-2 text-[8px] bg-zinc-950 border border-[#e5c17d] text-[#e5c17d] px-1 rounded-md font-mono font-black scale-90 select-none shadow-md">
                   AI
                 </div>
               </motion.div>
@@ -335,15 +292,16 @@ export default function SohidAiOracle({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-            className="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[420px] h-[550px] max-h-[80vh] z-50 flex flex-col bg-zinc-950 border border-emerald-950/50 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_15px_rgba(16,185,129,0.05)] overflow-hidden"
+            className="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[420px] h-[550px] max-h-[85vh] z-50 flex flex-col bg-[#030606]/95 border border-[#e5c17d]/20 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(229,193,125,0.08)] overflow-hidden"
             id="sohid-floating-chat-container"
           >
-            {/* Header with deep emerald tint */}
-            <div className="bg-gradient-to-r from-zinc-900 to-zinc-950 border-b border-zinc-900 px-4 py-3.5 flex items-center justify-between">
+            {/* Header with gold tint */}
+            <div className="bg-gradient-to-r from-zinc-900 to-zinc-950 border-b border-zinc-900 px-4 py-3.5 flex items-center justify-between relative">
+              <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#e5c17d]/35 to-transparent" />
               <div className="flex items-center gap-2.5">
                 <div className="relative">
-                  <div className="absolute inset-0 rounded-lg bg-emerald-500/10 blur animate-pulse" />
-                  <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 border border-emerald-500/30 text-emerald-400">
+                  <div className="absolute inset-0 rounded-lg bg-[#e5c17d]/10 blur animate-pulse" />
+                  <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-[#090e0e] border border-[#e5c17d]/30 text-[#e5c17d]">
                     <BrainCircuit className="h-5 w-5" />
                   </div>
                 </div>
@@ -352,13 +310,13 @@ export default function SohidAiOracle({
                     <h4 className="font-mono text-[12px] font-black text-white tracking-widest uppercase">
                       SOHID AI ASSISTANT
                     </h4>
-                    <span className="text-[8px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-1 py-0.2 rounded uppercase tracking-wider font-extrabold font-mono">
+                    <span className="text-[8px] bg-[#e5c17d]/10 text-[#e5c17d] border border-[#e5c17d]/20 px-1.5 py-0.2 rounded uppercase tracking-wider font-extrabold font-mono">
                       v4.5
                     </span>
                   </div>
-                  <p className="text-[9px] text-zinc-500 font-mono flex items-center gap-1">
-                    <Award className="h-2.5 w-2.5 text-emerald-400 shrink-0" />
-                    <span>Developed by master <strong className="text-emerald-400 font-bold uppercase">SOHID</strong></span>
+                  <p className="text-[9px] text-zinc-400 font-mono flex items-center gap-1">
+                    <Award className="h-2.5 w-2.5 text-[#e5c17d] shrink-0 animate-pulse" />
+                    <span>Developed by master <strong className="text-[#e5c17d] font-bold uppercase">SOHID</strong></span>
                   </p>
                 </div>
               </div>
@@ -391,8 +349,8 @@ export default function SohidAiOracle({
                   <div 
                     className={`rounded-xl p-3 text-[11.5px] leading-relaxed font-sans border whitespace-pre-wrap ${
                       msg.sender === 'user' 
-                        ? 'w-full bg-zinc-900 text-zinc-200 border-zinc-800 rounded-tr-none'
-                        : 'bg-emerald-950/10 text-zinc-300 border-emerald-950/30 rounded-tl-none markdown-body'
+                        ? 'w-full bg-zinc-900 text-zinc-200 border-zinc-850 rounded-tr-none'
+                        : 'bg-[#e5c17d]/5 text-zinc-250 border-[#e5c17d]/15 rounded-tl-none markdown-body text-[11px]'
                     }`}
                   >
                     {msg.sender === 'ai' ? (
@@ -408,11 +366,11 @@ export default function SohidAiOracle({
 
               {loading && (
                 <div className="self-start flex flex-col max-w-[85%] items-start">
-                  <span className="font-mono text-[8px] uppercase tracking-widest text-emerald-400 animate-pulse mb-0.5">
+                  <span className="font-mono text-[8px] uppercase tracking-widest text-[#e5c17d] animate-pulse mb-0.5">
                     {lang === 'bn' ? 'শহীদ এআই টাইপ করছে...' : 'SOHID AI is typing...'}
                   </span>
-                  <div className="bg-zinc-900/80 text-zinc-400 rounded-xl p-3 text-[11px] border border-zinc-900 rounded-tl-none flex items-center gap-2">
-                    <RefreshCw className="h-3 w-3 animate-spin text-emerald-400" />
+                  <div className="bg-[#e5c17d]/5 text-zinc-400 rounded-xl p-3 text-[11px] border border-[#e5c17d]/15 rounded-tl-none flex items-center gap-2">
+                    <RefreshCw className="h-3 w-3 animate-spin text-[#e5c17d]" />
                     <span className="font-mono text-[9px] tracking-widest animate-pulse uppercase">
                       {lang === 'bn' ? 'ম্যাট্রিক্স খুঁজছে...' : 'Matching guides...'}
                     </span>
@@ -430,17 +388,17 @@ export default function SohidAiOracle({
                 className="w-full flex items-center justify-between text-left focus:outline-none cursor-pointer"
               >
                 <span className="font-mono text-[9px] text-zinc-400 uppercase tracking-widest font-black flex items-center gap-1.5">
-                  <Cpu className="h-3 w-3 text-emerald-400 animate-pulse" />
+                  <Cpu className="h-3 w-3 text-[#e5c17d] animate-pulse" />
                   {lang === 'en' ? 'Quick Setup Handbooks' : 'কুইক সেটআপ হ্যান্ডবুকস'}
                 </span>
-                <div className="flex items-center gap-1.5 bg-zinc-900/80 px-2 py-0.5 rounded border border-zinc-800">
+                <div className="flex items-center gap-1.5 bg-zinc-900/80 px-2 py-0.5 rounded border border-zinc-805">
                   <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-wider">
                     {showHandbooks 
                       ? (lang === 'bn' ? 'লুকান' : 'HIDE') 
                       : (lang === 'bn' ? 'দেখান' : 'SHOW')}
                   </span>
                   {showHandbooks ? (
-                    <ChevronDown className="h-3 w-3 text-emerald-400" />
+                    <ChevronDown className="h-3 w-3 text-[#e5c17d]" />
                   ) : (
                     <ChevronUp className="h-3 w-3 text-zinc-400" />
                   )}
@@ -462,15 +420,15 @@ export default function SohidAiOracle({
                           key={topic.id}
                           onClick={() => handleQuickGuide(topic.id, topic.bn, topic.en)}
                           disabled={loading}
-                          className="cursor-pointer text-left rounded-lg border border-zinc-900/60 bg-zinc-900/20 hover:bg-zinc-900/80 hover:border-emerald-950/40 p-2 flex items-center justify-between group transition-all"
+                          className="cursor-pointer text-left rounded-lg border border-zinc-900 bg-zinc-900/20 hover:bg-zinc-900/80 hover:border-[#e5c17d]/20 p-2 flex items-center justify-between group transition-all"
                         >
                           <div className="flex items-center gap-2 overflow-hidden">
                             {topic.icon}
-                            <span className="text-[10px] font-mono text-zinc-300 group-hover:text-emerald-400 transition-colors truncate">
+                            <span className="text-[10px] font-mono text-zinc-300 group-hover:text-[#e5c17d] transition-colors truncate">
                               {lang === 'bn' ? topic.bn : topic.en}
                             </span>
                           </div>
-                          <ArrowRight className="h-2.5 w-2.5 text-zinc-600 group-hover:text-emerald-400 transition-colors shrink-0 ml-1" />
+                          <ArrowRight className="h-2.5 w-2.5 text-zinc-600 group-hover:text-[#e5c17d] transition-colors shrink-0 ml-1" />
                         </button>
                       ))}
                     </div>
@@ -480,7 +438,7 @@ export default function SohidAiOracle({
             </div>
 
             {/* Input message bar */}
-            <form onSubmit={handleSendMessage} className="bg-zinc-950 border-t border-zinc-900 p-3 flex gap-2">
+            <form onSubmit={handleSendMessage} className="bg-zinc-950 border-t border-zinc-905 p-3 flex gap-2">
               <input
                 type="text"
                 value={inputValue}
@@ -491,14 +449,14 @@ export default function SohidAiOracle({
                     ? "শহীদ এআই সহকারীকে প্রশ্ন করুন..." 
                     : "Ask SOHID AI setup questions..."
                 }
-                className="flex-1 rounded-xl bg-zinc-900 border border-zinc-800 text-xs px-3.5 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/40 transition-all font-sans"
+                className="flex-1 rounded-xl bg-zinc-900 border border-zinc-800 text-xs px-3.5 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-[#e5c17d]/40 transition-all font-sans"
               />
               <button
                 type="submit"
                 disabled={loading || !inputValue.trim()}
-                className="cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 disabled:opacity-40 px-3.5 rounded-xl text-zinc-950 transition-all flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(16,185,129,0.2)]"
+                className="cursor-pointer bg-gradient-to-r from-[#e5c17d] to-[#aa8c2c] disabled:opacity-40 px-3.5 rounded-xl text-zinc-950 transition-all flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(229,193,125,0.2)]"
               >
-                <Send className="h-3.5 w-3.5" />
+                <Send className="h-3.5 w-3.5 text-black font-bold" />
               </button>
             </form>
           </motion.div>

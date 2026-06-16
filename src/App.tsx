@@ -52,6 +52,11 @@ export default function App() {
   const [signalsCache, setSignalsCache] = useState<Record<string, OTCSignal[]>>({});
   const [statsCache, setStatsCache] = useState<Record<string, DayStats>>({});
   
+  // Track trade outcomes for currently active signals (un-saved layout choices)
+  const [signalResults, setSignalResults] = useState<Record<string, 'WIN' | 'LOSS' | 'MTG_WIN' | undefined>>({});
+  // Track locked-in trade outcomes that update stats, accuracy, and results reports
+  const [savedSignalResults, setSavedSignalResults] = useState<Record<string, 'WIN' | 'LOSS' | 'MTG_WIN' | undefined>>({});
+  
   const currentSelectionKey = `${selectedDateStr || dhakaTime.formattedDate}-${selectedPair}-${selectedHour}-${selectedExpiry}`;
   const isAlreadyGenerated = currentSelectionKey in signalsCache;
   const currentSignals = signalsCache[currentSelectionKey] || [];
@@ -124,6 +129,8 @@ export default function App() {
   const handleGenerateSignals = () => {
     setIsGenerating(true);
     setScannerStep(0);
+    setSignalResults({}); // Reset the checklist for a fresh hour scan!
+    setSavedSignalResults({}); // Clear the saved committed results too!
     
     if (soundEnabled) {
       try {
@@ -232,6 +239,11 @@ export default function App() {
         currentDhakaTime={dhakaTime.formattedTime} 
         currentDhakaDate={selectedDateStr || dhakaTime.formattedDate} 
         totalSynchronizedUsers={146}
+        lang={lang}
+        onResetResults={() => {
+          setSignalResults({});
+          setSavedSignalResults({});
+        }}
       />
 
       {/* Main Core View Area */}
@@ -390,7 +402,7 @@ export default function App() {
               className="space-y-6"
             >
               {/* 10 Signals Section */}
-              <div className="space-y-4">
+              <div id="signals-container-panel" className="space-y-4 scroll-mt-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-800 pb-3">
                   <div className="flex items-center gap-2">
                     <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 font-mono text-xs font-black border border-emerald-500/20">
@@ -431,19 +443,37 @@ export default function App() {
                       signal={sig} 
                       currentDhakaTime={liveDateInstance} 
                       lang={lang}
+                      selectedResult={signalResults[sig.id]}
+                      savedResult={savedSignalResults[sig.id]}
+                      onResultChange={(id, value) => {
+                        setSignalResults(prev => ({
+                          ...prev,
+                          [id]: value
+                        }));
+                      }}
+                      onResultSave={(id, value) => {
+                        setSavedSignalResults(prev => ({
+                          ...prev,
+                          [id]: value
+                        }));
+                      }}
                     />
                   ))}
                 </div>
               </div>
 
               {/* Special Admin & Telegram Tool Section */}
-              <TelegramConverter 
-                signals={currentSignals} 
-                pair={selectedPair} 
-                expiry={selectedExpiry} 
-                hour={selectedHour} 
-                date={selectedDateStr || dhakaTime.formattedDate} 
-              />
+              <div id="telegram-converter-panel" className="scroll-mt-6">
+                <TelegramConverter 
+                  signals={currentSignals} 
+                  pair={selectedPair} 
+                  expiry={selectedExpiry} 
+                  hour={selectedHour} 
+                  date={selectedDateStr || dhakaTime.formattedDate} 
+                  savedSignalResults={savedSignalResults}
+                  lang={lang}
+                />
+              </div>
             </motion.div>
           ) : (
             <motion.div
@@ -479,7 +509,9 @@ export default function App() {
         </AnimatePresence>
 
         {/* Educational Execution Guide Panel */}
-        <TradingGuide />
+        <div id="trading-guide-panel" className="scroll-mt-6">
+          <TradingGuide />
+        </div>
 
         {/* Live Market Simulation (Immersive visual background effect matching active status) */}
         <div className="rounded-2xl border border-zinc-800/60 bg-gradient-to-br from-zinc-900/10 to-zinc-950 p-4 font-mono text-xs text-zinc-500">
@@ -494,7 +526,7 @@ export default function App() {
             
             <div className="flex items-center gap-1 text-[10px] text-zinc-500">
               <span>{lang === 'en' ? 'Algorithm:' : 'অ্যালগরিদম:'}</span>
-              <span className="text-zinc-450 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800 font-bold">
+              <span className="text-zinc-350 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800 font-bold">
                 SEED_LCG_M1_REINFORCE
               </span>
             </div>
@@ -502,7 +534,9 @@ export default function App() {
         </div>
 
         {/* Special MTG Strategy hub Section (At the absolute bottom as requested) */}
-        <MtgExplanation lang={lang} />
+        <div id="mtg-explanation-panel" className="scroll-mt-6">
+          <MtgExplanation lang={lang} />
+        </div>
 
       </main>
 

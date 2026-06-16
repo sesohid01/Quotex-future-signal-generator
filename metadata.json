@@ -1,6 +1,6 @@
 {
-  "name": "Quotex OTC Future Signal Generator",
-  "description": "Deterministic premium OTC signal generator for Quotex, supporting USD/BDT (OTC), USD/MXN (OTC) and other custom pairs with UTC+6 time constraints and 10 hourly signals.",
+  "name": "Quotex OTC Signal Generator",
+  "description": "Deterministic premium OTC signal generator for Quotex supporting custom currency pairs with UTC timezone and hourly trading signals.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
